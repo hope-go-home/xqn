@@ -1,0 +1,36 @@
+create database book_db;
+use book_db;
+
+-- drop table book;
+create table if not exists book(book_id int primary key comment '图书编号',name varchar(50) not null comment '书名',author varchar(50) not null comment '作者',classification varchar(50) not null comment '分类',state enum('可借阅','已借出') comment '状态');
+
+insert into book (book_id,name,author,classification,state) values (1,'西游记', '吴承恩', '古典文学', '可借阅'),(2,'活着', '余华', '小说', '已借出'),(3,'MySQL从入门到精通', '张三', '技术', '可借阅'),(4,'三体', '刘慈欣', '科幻', '可借阅'),(5,'叶坚漂流记','吴佳伟','科幻','已借出');
+select*from book;
+
+
+
+drop table admin;
+create table if not exists admin(username VARCHAR(50) UNIQUE NOT NULL,password VARCHAR(255) NOT NULL);
+insert into admin (username,password) values ('admin','admin123');
+select*from admin;
+
+
+
+-- drop table student;
+create table if not exists student(username VARCHAR(50) UNIQUE NOT NULL,password VARCHAR(255) NOT NULL)
+insert into student (username,password) values ('张三','123456');
+select*from student;
+
+-- drop table borrow;
+create table if not exists borrow(
+    id int auto_increment primary key,
+    username varchar(50) not null comment '借阅人用户名',
+    book_id int not null comment '图书编号',
+    borrow_date date not null comment '借阅日期',
+    due_date date not null comment '应还日期（借阅日+7天）',
+    return_date date default null comment '实际归还日期',
+    foreign key (book_id) references book(book_id) on delete cascade
+);
+
+
+
