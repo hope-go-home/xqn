@@ -1,0 +1,475 @@
+/* ========== 浅色默认变量 ========== */
+:root {
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-secondary: #1e293b;
+
+    --color-bg: #f8fafc;
+    --color-bg-card: #ffffff;
+    --color-bg-section-1: #f0f8ff;
+    --color-bg-section-2: #f5f5dc;
+    --color-bg-section-3: #f0fdf4;
+    --color-bg-section-4: #ffe4e1;
+    --color-bg-tag: #e2e8f0;
+
+    --color-text-primary: #1e293b;
+    --color-text-secondary: #475569;
+    --color-text-muted: #64748b;
+    --color-text-inverse: #f1f5f9;
+
+    --color-border: #e2e8f0;
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-card-hover: 0 12px 28px rgba(0, 0, 0, 0.12);
+    --transition-speed: 0.3s;
+}
+
+/* ========== 【修复后】手动点击切换深色 正确选择器 ========== */
+#dark-switch:checked ~ #page-wrap {
+    --color-primary: #60a5fa;
+    --color-primary-hover: #93bbfc;
+    --color-secondary: #0f172a;
+
+    --color-bg: #0b1120;
+    --color-bg-card: #1e293b;
+    --color-bg-section-1: #152238;
+    --color-bg-section-2: #1a273c;
+    --color-bg-section-3: #142736;
+    --color-bg-section-4: #261c2c;
+    --color-bg-tag: #334155;
+
+    --color-text-primary: #e2e8f0;
+    --color-text-secondary: #cbd5e1;
+    --color-text-muted: #94a3b8;
+    --color-text-inverse: #f8fafc;
+
+    --color-border: #334155;
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-card-hover: 0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
+/* ========== 系统自动深色模式（保留原有功能） ========== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #60a5fa;
+        --color-primary-hover: #93bbfc;
+        --color-secondary: #0f172a;
+
+        --color-bg: #0b1120;
+        --color-bg-card: #1e293b;
+        --color-bg-section-1: #152238;
+        --color-bg-section-2: #1a273c;
+        --color-bg-section-3: #142736;
+        --color-bg-section-4: #261c2c;
+        --color-bg-tag: #334155;
+
+        --color-text-primary: #e2e8f0;
+        --color-text-secondary: #cbd5e1;
+        --color-text-muted: #94a3b8;
+        --color-text-inverse: #f8fafc;
+
+        --color-border: #334155;
+        --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.4);
+        --shadow-card-hover: 0 12px 28px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* ========== 切换按钮样式 ========== */
+.theme-btn {
+    padding: 4px 12px;
+    margin-left: 12px;
+    border: 1px solid var(--color-text-inverse);
+    border-radius: 6px;
+    color: var(--color-text-inverse);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    user-select: none;
+}
+.theme-btn:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* ========== 全局重置与动画 ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#page-wrap {
+    font-family: "Microsoft YaHei", sans-serif;
+    padding-top: 70px;
+    background: var(--color-bg);
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    animation: fadeInUp 0.8s ease forwards;
+    transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+/* ========== 导航栏 ========== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    transition: background var(--transition-speed);
+}
+.main-header nav {
+    display: flex;
+    align-items: center;
+}
+.main-header nav a {
+    color: var(--color-text-inverse);
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 500;
+    transition: color var(--transition-speed);
+}
+.main-header nav a:hover {
+    color: #ff6347;
+}
+
+/* ========== 头像区域 ========== */
+.avatar-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--color-bg-card);
+    box-shadow: var(--shadow-card);
+    flex-shrink: 0;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+.avatar-wrapper img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.online-badge {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 22px;
+    height: 22px;
+    background: #22c55e;
+    border-radius: 50%;
+    border: 2px solid var(--color-bg-card);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    transition: border-color var(--transition-speed);
+}
+
+/* ========== 简历头部 ========== */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 20px auto 30px;
+    padding: 20px 30px;
+    background: var(--color-bg-card);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    transition: background var(--transition-speed), box-shadow var(--transition-speed);
+}
+.profile-info h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+    color: var(--color-text-primary);
+    transition: color var(--transition-speed);
+}
+.profile-info .title {
+    font-size: 18px;
+    color: var(--color-primary);
+    font-weight: 500;
+    margin-bottom: 4px;
+    transition: color var(--transition-speed);
+}
+.profile-info .contact-info {
+    color: var(--color-text-muted);
+    font-size: 14px;
+    transition: color var(--transition-speed);
+}
+
+/* ========== 双列布局 ========== */
+.main-layout {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+}
+.sidebar {
+    flex: 0 0 230px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.sidebar > div {
+    background: var(--color-bg-card);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    transition: background var(--transition-speed), box-shadow var(--transition-speed);
+}
+.sidebar h3 {
+    font-size: 16px;
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    color: var(--color-text-primary);
+    transition: color var(--transition-speed), border-color var(--transition-speed);
+}
+.sidebar ul {
+    list-style: none;
+}
+.sidebar ul li {
+    padding: 4px 0;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    transition: color var(--transition-speed);
+}
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ========== 板块通用样式 ========== */
+section {
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    transition: background var(--transition-speed), box-shadow var(--transition-speed);
+}
+.section-intro { background-color: var(--color-bg-section-1); }
+.section-skills { background-color: var(--color-bg-section-2); }
+.section-projects { background-color: var(--color-bg-section-3); }
+.section-contact { background-color: var(--color-bg-section-4); }
+
+h2 {
+    position: relative;
+    padding-left: 18px;
+    font-size: 24px;
+    color: var(--color-text-primary);
+    margin-top: 0;
+    transition: color var(--transition-speed);
+}
+h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 70%;
+    background-color: var(--color-primary);
+    border-radius: 3px;
+    transition: background var(--transition-speed);
+}
+
+/* ========== 技能标签 ========== */
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin-top: 16px;
+    padding: 16px 0;
+}
+.skill-tag {
+    background: var(--color-bg-tag);
+    color: var(--color-text-primary);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all var(--transition-speed);
+    cursor: default;
+}
+.skill-tag:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* ========== 进度条动画 ========== */
+.skills-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+.progress-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.progress-item span {
+    width: 80px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+    transition: color var(--transition-speed);
+}
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: var(--color-bg-tag);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: background var(--transition-speed);
+}
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: var(--color-primary);
+    border-radius: 4px;
+    animation: progressGrow 1s ease forwards;
+    animation-delay: 0.2s;
+    transition: background var(--transition-speed);
+}
+@keyframes progressGrow {
+    from { width: 0; }
+    to { width: var(--target-width, 50%); }
+}
+
+/* ========== 项目卡片hover上浮（作业要求transform+transition） ========== */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 16px;
+}
+.project-card {
+    flex: 1 1 200px;
+    background: var(--color-bg-card);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background var(--transition-speed);
+    cursor: default;
+}
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+}
+.project-card h3 {
+    font-size: 18px;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    transition: color var(--transition-speed);
+}
+.project-card p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    transition: color var(--transition-speed);
+}
+
+/* ========== 页脚 ========== */
+.page-footer {
+    max-width: 1200px;
+    margin: 0 auto 20px;
+    padding: 20px;
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--color-border);
+    transition: color var(--transition-speed), border-color var(--transition-speed);
+}
+.page-footer a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-speed);
+}
+.page-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ========== 响应式手机端 <768px 双列变单列（作业要求） ========== */
+@media screen and (max-width: 768px) {
+    .main-header {
+        padding: 0 16px;
+    }
+    .main-header nav a {
+        margin-right: 12px;
+        font-size: 14px;
+    }
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+        padding: 20px 16px;
+        margin: 10px 12px 20px;
+    }
+    .avatar-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+    .profile-info h1 {
+        font-size: 24px;
+    }
+    .main-layout {
+        flex-direction: column;
+        padding: 0 12px;
+        gap: 20px;
+    }
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .sidebar > div {
+        flex: 1 1 45%;
+        min-width: 140px;
+    }
+    section {
+        padding: 16px 18px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .project-card {
+        flex: 1 1 100%;
+    }
+    .progress-item {
+        flex-wrap: wrap;
+    }
+    .progress-item span {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 480px) {
+    .sidebar > div {
+        flex: 1 1 100%;
+    }
+    .main-header nav a {
+        margin-right: 8px;
+        font-size: 12px;
+    }
+    .avatar-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+}

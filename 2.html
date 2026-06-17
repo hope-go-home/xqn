@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的页面</title>
+    <link rel="stylesheet" href="2.css">
+</head>
+<body>
+    <!-- 开关放在body最开头，和#page-wrap同级 -->
+    <input type="checkbox" id="dark-switch" hidden>
+
+    <!-- 新增全局容器，所有页面内容放这里 -->
+    <div id="page-wrap">
+        <!-- 固定导航：label充当切换按钮 -->
+        <header class="main-header">
+            <nav>
+                <a href="#intro">简介</a>
+                <a href="#skills">技能</a>
+                <a href="#projects">项目</a>
+                <a href="#contact">联系</a>
+                <label for="dark-switch" class="theme-btn">🌙 切换深色</label>
+            </nav>
+        </header>
+
+        <!-- 简历头部 -->
+        <div class="profile-header">
+            <div class="avatar-wrapper">
+                <img src="D:\桌面\快捷方式\传输数据\图片\7CF56BD4F87EC8B73C32EF0411579B9C.jpg" alt="头像">
+                <span class="online-badge"></span>
+            </div>
+            <div class="profile-info">
+                <h1>王子彤</h1>
+                <p class="title">程序员</p>
+                <p class="contact-info">wangzt1531453342@qq.com &nbsp;|&nbsp; 45678936985</p>
+            </div>
+        </div>
+
+        <!-- 双列布局 -->
+        <div class="main-layout">
+            <aside class="sidebar">
+                <div class="personal-info">
+                    <h3>个人信息</h3>
+                    <ul>
+                        <li><strong>姓名：</strong>王子彤</li>
+                        <li><strong>年龄：</strong>21</li>
+                        <li><strong>籍贯：</strong>江西</li>
+                    </ul>
+                </div>
+                <div class="contact-info-side">
+                    <h3>联系方式</h3>
+                    <ul>
+                        <li>1531453342@.com</li>
+                        <li>12345678971</li>
+                        <li>新余市渝水区新余学院</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <section class="section-intro" id="intro">
+                    <h2>个人简介</h2>
+                    <p>这里写简介内容...</p>
+                </section>
+
+                <section class="section-skills" id="skills">
+                    <h2>技能标签</h2>
+                    <div class="skills-tags">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Vue</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Webpack</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+
+                    <h2 style="margin-top: 20px;">熟练度</h2>
+                    <div class="skills-progress">
+                        <div class="progress-item">
+                            <span>HTML / CSS</span>
+                            <div class="progress-bar"><div class="progress-fill" style="--target-width: 90%;"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <span>JavaScript</span>
+                            <div class="progress-bar"><div class="progress-fill" style="--target-width: 75%;"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <span>React</span>
+                            <div class="progress-bar"><div class="progress-fill" style="--target-width: 70%;"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <span>Vue</span>
+                            <div class="progress-bar"><div class="progress-fill" style="--target-width: 65%;"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <span>Node.js</span>
+                            <div class="progress-bar"><div class="progress-fill" style="--target-width: 55%;"></div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-projects" id="projects">
+                    <h2>项目作品</h2>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h3>个人博客</h3>
+                            <p>基于 React + Node.js 构建的全栈博客系统，支持 Markdown 文章发布。</p>
+                        </div>
+                        <div class="project-card">
+                            <h3>电商小程序</h3>
+                            <p>使用 Vue + 微信小程序原生开发，实现商品浏览、购物车、订单管理。</p>
+                        </div>
+                        <div class="project-card">
+                            <h3>数据可视化大屏</h3>
+                            <p>利用 ECharts + React 打造实时数据监控面板，适配多种屏幕。</p>
+                        </div>
+                        <div class="project-card">
+                            <h3>在线简历生成器</h3>
+                            <p>基于 HTML/CSS/JS 的在线工具，用户填写信息即可生成精美简历页面。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-contact" id="contact">
+                    <h2>联系方式</h2>
+                    <p>邮箱：1531453342@qq.com</p>
+                </section>
+            </main>
+        </div>
+
+        <footer class="page-footer">
+            <p>© 2025 王子彤 · 使用 HTML & CSS 打造 · <a href=https://github.com/hope-go-home/xqn target="_blank">GitHub Pages 部署链接</a></p>
+        </footer>
+    </div>
+</body>
+</html>
